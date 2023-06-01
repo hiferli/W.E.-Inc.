@@ -22,10 +22,26 @@ submitData.addEventListener('click', async (e) => {
     console.log(document.getElementById('name').value); 
 
     // Add a new document in collection "cities"
-    await setDoc(doc(db, "users"), {
+    
+    // // // Use this for main
+    // await setDoc(db , 'users' , #id)
+    
+    await addDoc(collection(db, "users"), {
         name: document.getElementById('name').value,
         date: document.getElementById('date').value,
     });
     
     alert("User Added")
+})
+
+
+getData.addEventListener('click' , async () => {
+    const querySnapshot = await getDocs(collection(db, "users"));
+
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", (doc.data()));
+        
+    });
+
 })
