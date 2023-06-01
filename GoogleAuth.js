@@ -44,6 +44,7 @@ googleAuth.addEventListener('click' , () => {
             
             // Setting information locally
             setInformationLocally(user);
+            updateProfilePicture();
         } else {
             // User is signed out
             // ...
@@ -62,6 +63,7 @@ googleAuth.addEventListener('click' , () => {
 
                 // Setting information locally
                 setInformationLocally(user);
+                updateProfilePicture();
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;
@@ -87,4 +89,18 @@ const setInformationLocally = (user) => {
 
     // console.log("Stored in Localstorage");
     // console.log(JSON.parse(localStorage.getItem("userData")))
+}
+
+const updateProfilePicture = () => {
+    if (localStorage.getItem('userData')) {
+        const profilePicture = JSON.parse(localStorage.getItem('userData')).photoURL;
+        const name = JSON.parse(localStorage.getItem('userData')).name;
+        const email = JSON.parse(localStorage.getItem('userData')).email;
+
+        const imageTag = `<img src=${profilePicture} alt=${name + "(" + email + ")"}></img>`
+        console.log(profilePicture);
+        document.getElementById('authentication').innerHTML += imageTag; 
+    } else {
+        console.log("None")
+    }
 }
