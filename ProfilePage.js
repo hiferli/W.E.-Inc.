@@ -40,3 +40,19 @@ if(JSON.parse(localStorage.getItem('userData')) !== null){
     console.log("Some Heavy Error Going On!");
 }
 
+const handleValidation = () => {
+    var designation = document.getElementById('designation').value;
+    if(designation === ""){
+        alert("Please enter a designation.");
+    }
+}
+
+const submitData = () => {
+
+}
+
+const handleSubmit = (e) => {
+   
+    handleValidation();
+    submitData();
+}
