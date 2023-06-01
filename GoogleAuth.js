@@ -40,14 +40,16 @@ googleAuth.addEventListener('click' , () => {
             // https://firebase.google.com/docs/reference/js/auth.user
             // ...
             // alert("User already present")
-            console.log(user);
-
+            // console.log(user);
+            
+            // Setting information locally
+            setInformationLocally(user);
         } else {
             // User is signed out
             // ...
             // alert("Logged out");
             signInWithPopup(auth, provider)
-              .then((result) => {
+            .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
@@ -55,8 +57,11 @@ googleAuth.addEventListener('click' , () => {
                 const user = result.user;
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...
-        
-                console.log(user)
+                
+                // console.log(user)
+
+                // Setting information locally
+                setInformationLocally(user);
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;
@@ -72,4 +77,14 @@ googleAuth.addEventListener('click' , () => {
       });
 })
 
+const setInformationLocally = (user) => {
+    localStorage.setItem("userData" , JSON.stringify({
+        "name": user.displayName,
+        "email": user.email,
+        "photoURL": user.photoURL,
+        "isAdmin": false,
+    }))
 
+    // console.log("Stored in Localstorage");
+    // console.log(JSON.parse(localStorage.getItem("userData")))
+}
