@@ -97,10 +97,12 @@ const updateProfilePicture = () => {
         const name = JSON.parse(localStorage.getItem('userData')).name;
         const email = JSON.parse(localStorage.getItem('userData')).email;
 
-        const imageTag = `<img src=${profilePicture} alt=${name + "(" + email + ")"}></img>`
-        console.log(profilePicture);
+        const imageTag = `<img src=${profilePicture} width='40%' height = '40%' class='rounded mx-auto d-block' alt=${name + "(" + email + ")"}></img>`
+        // console.log(profilePicture);
         document.getElementById('authentication').innerHTML += imageTag; 
     } else {
-        console.log("None")
+        const signInWithGoogle = 'https://developers.google.com/static/identity/images/btn_google_signin_dark_normal_web.png';
+        const imageTag = `<img src=${signInWithGoogle} width='90%' height = '90%' class='rounded mx-auto d-block' alt="Sign in with Google"></img>`
+        document.getElementById('authentication').innerHTML += imageTag; 
     }
 }
