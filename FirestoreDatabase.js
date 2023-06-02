@@ -27,8 +27,7 @@ const handleValidation = () => {
     return true;
 }
 
-
-submitData.addEventListener('click', async (e) => {
+const submitForm = async (e) => {
     e.preventDefault();
 
     if (handleValidation()) {
@@ -59,7 +58,9 @@ submitData.addEventListener('click', async (e) => {
         // Make sure that this updated information reaches the localstorage too
     }
 
-})
+}
+
+submitData.addEventListener('click', submitForm)
 
 const returnDOM = (profilePicture, name, designation, email, instagram, linkedin, github) => {
     var employeeCard = `
@@ -108,8 +109,7 @@ const returnDOM = (profilePicture, name, designation, email, instagram, linkedin
     return employeeCard;
 }
 
-
-getData.addEventListener('click', async () => {
+const loadEmployees = async () => {
     const querySnapshot = await getDocs(collection(db, "users"));
 
 
@@ -127,7 +127,9 @@ getData.addEventListener('click', async () => {
         document.getElementById("allEmployees").innerHTML += returnDOM(profilePicture, name, designation, email, instagram, linkedin, github);
     });
 
-})
+}
+
+getData.addEventListener('click', loadEmployees)
 
 /*
 
