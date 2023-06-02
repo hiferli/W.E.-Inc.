@@ -33,10 +33,7 @@ const provider = new GoogleAuthProvider();
 
 // // // // Auth with Button
 const checkAndPerformAuthentication = () => {
-    if(localStorage.getItem("userData") === null){
-        document.write("Please login using your Google Account")
-        performAuthentication();
-    }
+    performAuthentication();
 }
 
 const performAuthentication = () => {
@@ -109,7 +106,7 @@ const updateProfilePicture = () => {
 
         const imageTag = `<img src=${profilePicture} width='40%' height = '40%' class='rounded mx-auto d-block' alt=${name + "(" + email + ")"}></img>`
         // console.log(profilePicture);
-        document.getElementById('user').innerHTML += imageTag;
+        document.getElementById('user').innerHTML = imageTag;
         document.getElementById("googleAuth").href = 'EditDetails.html';
     } else {
         const signInWithGoogle = 'https://developers.google.com/static/identity/images/btn_google_signin_dark_normal_web.png';
