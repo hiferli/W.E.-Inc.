@@ -14,7 +14,7 @@
             </ul>
         </div>
 
-        <a href="EditDetails.html">
+        <!-- <a href="EditDetails.html">
             <div class="d-flex sm" id="authentication">
                 <script>
                     if (localStorage.getItem('userData')) {
@@ -32,7 +32,31 @@
                     }
                 </script>
             </div>
+        </a> -->
+
+        <a id='googleAuth' href="#">
+            <div id="user">
+
+            </div>
         </a>
 
+        <script>
+            if (localStorage.getItem('userData')) {
+                const profilePicture = JSON.parse(localStorage.getItem('userData')).photoURL;
+                const name = JSON.parse(localStorage.getItem('userData')).name;
+                const email = JSON.parse(localStorage.getItem('userData')).email;
+
+                const imageTag = `<img src=${profilePicture} width='40%' height = '40%' class='rounded mx-auto d-block' alt=${name + "(" + email + ")"}></img>`
+                // console.log(profilePicture);
+                document.getElementById('user').innerHTML += imageTag;
+                document.getElementById("googleAuth").href = 'EditDetails.html';
+            } else {
+                const signInWithGoogle = 'https://developers.google.com/static/identity/images/btn_google_signin_dark_normal_web.png';
+                const imageTag = `<img  src=${signInWithGoogle} width='90%' height = '90%' class='rounded mx-auto d-block' alt="Sign in with Google"></img>`
+                document.getElementById('user').innerHTML += imageTag;
+            }
+        </script>
+
+        <script type="module" src="GoogleAuth.js"></script>
     </div>
 </nav>
