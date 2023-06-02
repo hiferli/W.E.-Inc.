@@ -129,7 +129,8 @@ const loadEmployees = async () => {
 
 }
 
-getData.addEventListener('click', loadEmployees)
+// getData.addEventListener('click', loadEmployees)
+window.addEventListener("DOMContentLoaded",loadEmployees)
 
 /*
 
