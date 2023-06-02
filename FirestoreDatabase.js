@@ -29,20 +29,15 @@ const handleValidation = () => {
 
 const submitForm = async (e) => {
     e.preventDefault();
+    const email = JSON.parse(localStorage.getItem('userData')).email;
 
     if (handleValidation()) {
-        const email = JSON.parse(localStorage.getItem('userData')).email;
-
         const designation = document.getElementById('designation').value;
         const instagram = document.getElementById('instagram').value;
         const linkedin = document.getElementById('linkedin').value;
         const github = document.getElementById('github').value;
 
-        // // // Use this for main
-        // await setDoc(db , 'users' , #id)
-
-        // await addDoc(collection(db, "users"), {
-        await setDoc(doc(db, 'users', email), {
+        const userDataJSON = {
             name: JSON.parse(localStorage.getItem('userData')).name,
             email: JSON.parse(localStorage.getItem('userData')).email,
             profilePicture: JSON.parse(localStorage.getItem('userData')).photoURL,
@@ -50,12 +45,22 @@ const submitForm = async (e) => {
             instagram: instagram,
             linkedin: linkedin,
             github: github
-        });
+        };
+        
+        console.log(userDataJSON)
+        // // // Use this for main
+        // await setDoc(db , 'users' , #id)
+
+        // await addDoc(collection(db, "users"), {
+        await setDoc(doc(db, 'users', email), userDataJSON);
 
         alert("User Added");
 
         // // // IMPORTANT: TODO:
         // Make sure that this updated information reaches the localstorage too
+   
+        localStorage.setItem("userData", JSON.stringify(userDataJSON))
+        alert("localStorage updated")
     }
 
 }
@@ -130,7 +135,7 @@ const loadEmployees = async () => {
 }
 
 // getData.addEventListener('click', loadEmployees)
-window.addEventListener("DOMContentLoaded",loadEmployees)
+window.addEventListener("DOMContentLoaded", loadEmployees)
 
 /*
 
