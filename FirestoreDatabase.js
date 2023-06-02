@@ -40,11 +40,11 @@ const submitForm = async (e) => {
         const userDataJSON = {
             name: JSON.parse(localStorage.getItem('userData')).name,
             email: JSON.parse(localStorage.getItem('userData')).email,
-            profilePicture: JSON.parse(localStorage.getItem('userData')).photoURL,
+            profilePicture: JSON.parse(localStorage.getItem('userData')).profilePicture,
             designation: designation,
-            instagram: instagram,
-            linkedin: linkedin,
-            github: github
+            instagram: instagram === undefined ? "" : instagram,
+            linkedin: linkedin === undefined ? "" : linkedin,
+            github: github === undefined ? "" : github
         };
         
         console.log(userDataJSON)
