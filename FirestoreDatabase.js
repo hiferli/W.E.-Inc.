@@ -81,16 +81,16 @@ const returnDOM = (profilePicture, name, designation, email, instagram, linkedin
                 </div>
 
                 <div class="d-flex justify-content-end">
-                    <a href="${email}" class="px-2 ${email === undefined ? 'disabled' : ''}">
+                    <a href="${email}" class="px-2 ${email === undefined || email === "" ? 'disabled' : ''}">
                         <i class="bi bi-envelope-at-fill fs-2"></i>
                     </a>
-                    <a href="${instagram}" class="px-2 ${instagram === undefined ? 'disabled' : ''}">
+                    <a href="${instagram}" class="px-2 ${instagram === undefined || instagram === "" ? 'disabled' : ''}">
                         <i class="bi bi-instagram lg fs-2"></i>
                     </a>
-                    <a href="${linkedin}" class="px-2 ${linkedin === undefined ? 'disabled' : ''}">
+                    <a href="${linkedin}" class="px-2 ${linkedin === undefined || linkedin === "" ? 'disabled' : ''}">
                         <i class="bi bi-linkedin fs-2"></i>
                     </a>
-                    <a href="${github}" class="px-2 ${github === undefined ? 'disabled' : ''}">
+                    <a href="${github}" class="px-2 ${github === undefined || github === "" ? 'disabled' : ''}">
                         <i class="bi bi-github fs-2"></i>
                     </a>
                 </div>
