@@ -1,3 +1,5 @@
+
+
 // // // // Firebase Provided Code
 
 // Import the functions you need from the SDKs you need
@@ -34,6 +36,39 @@ const provider = new GoogleAuthProvider();
 // // // // Auth with Button
 const checkAndPerformAuthentication = () => {
     performAuthentication();
+}
+
+const setInformationLocally = (user) => {
+
+    if(localStorage.getItem('userData') === null){
+        localStorage.setItem("userData" , JSON.stringify({
+            "name": user.displayName,
+            "email": user.email,
+            "photoURL": user.photoURL,
+        }))
+    }
+    // console.log(user)
+    // localStorage.clear();
+
+    // console.log("Stored in Localstorage");
+    // console.log(JSON.parse(localStorage.getItem("userData")))
+}
+
+const updateProfilePicture = () => {
+    if (localStorage.getItem('userData')) {
+        const profilePicture = JSON.parse(localStorage.getItem('userData')).photoURL;
+        const name = JSON.parse(localStorage.getItem('userData')).name;
+        const email = JSON.parse(localStorage.getItem('userData')).email;
+
+        const imageTag = `<img src=${profilePicture} width='40%' height = '40%' class='rounded mx-auto d-block' alt=${name + "(" + email + ")"}></img>`
+        // console.log(profilePicture);
+        document.getElementById('user').innerHTML = imageTag;
+        document.getElementById("googleAuth").href = 'EditDetails.html';
+    } else {
+        const signInWithGoogle = 'https://developers.google.com/static/identity/images/btn_google_signin_dark_normal_web.png';
+        const imageTag = `<img  src=${signInWithGoogle} width='90%' height = '90%' class='rounded mx-auto d-block' alt="Sign in with Google"></img>`
+        document.getElementById('user').innerHTML += imageTag;
+    }
 }
 
 const performAuthentication = () => {
@@ -85,32 +120,3 @@ const performAuthentication = () => {
 
 window.onload = checkAndPerformAuthentication;
 googleAuth.addEventListener('click' , performAuthentication);
-
-const setInformationLocally = (user) => {
-    localStorage.setItem("userData" , JSON.stringify({
-        "name": user.displayName,
-        "email": user.email,
-        "photoURL": user.photoURL,
-        "isAdmin": false,
-    }))
-
-    // console.log("Stored in Localstorage");
-    // console.log(JSON.parse(localStorage.getItem("userData")))
-}
-
-const updateProfilePicture = () => {
-    if (localStorage.getItem('userData')) {
-        const profilePicture = JSON.parse(localStorage.getItem('userData')).photoURL;
-        const name = JSON.parse(localStorage.getItem('userData')).name;
-        const email = JSON.parse(localStorage.getItem('userData')).email;
-
-        const imageTag = `<img src=${profilePicture} width='40%' height = '40%' class='rounded mx-auto d-block' alt=${name + "(" + email + ")"}></img>`
-        // console.log(profilePicture);
-        document.getElementById('user').innerHTML = imageTag;
-        document.getElementById("googleAuth").href = 'EditDetails.html';
-    } else {
-        const signInWithGoogle = 'https://developers.google.com/static/identity/images/btn_google_signin_dark_normal_web.png';
-        const imageTag = `<img  src=${signInWithGoogle} width='90%' height = '90%' class='rounded mx-auto d-block' alt="Sign in with Google"></img>`
-        document.getElementById('user').innerHTML += imageTag;
-    }
-}
