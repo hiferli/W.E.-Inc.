@@ -74,9 +74,9 @@ const returnDOM = (profilePicture, name, designation, email, instagram, linkedin
                             class="rounded-circle img-fluid" style="width: 100px;" />
                     </div>
 
-                    <div class="d-inline-block flex-grow-1 ms-3">
+                    <div class="d-inline-block flex-grow-1 ms-3"'>
                         <h3>${name}</h3>
-                        <p class="text-muted hstack gap-3" style="color: #2b2a2a;">${designation}<span class="vr"></span>${email}</p>
+                        <p class="text-muted hstack gap-3 text-break" style="color: #2b2a2a; font-size: 90%">${designation}<span class="vr"></span>${email}</p>
                     </div>
                 </div>
 
