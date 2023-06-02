@@ -56,7 +56,7 @@ const setInformationLocally = (user) => {
 
 const updateProfilePicture = () => {
     if (localStorage.getItem('userData')) {
-        const profilePicture = JSON.parse(localStorage.getItem('userData')).photoURL;
+        const profilePicture = JSON.parse(localStorage.getItem('userData')).profilePicture;
         const name = JSON.parse(localStorage.getItem('userData')).name;
         const email = JSON.parse(localStorage.getItem('userData')).email;
 
