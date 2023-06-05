@@ -44,7 +44,7 @@ const setInformationLocally = (user) => {
         localStorage.setItem("userData" , JSON.stringify({
             "name": user.displayName,
             "email": user.email,
-            "photoURL": user.photoURL,
+            "photoURL": user.photoURL
         }))
     }
     // console.log(user)
@@ -54,21 +54,18 @@ const setInformationLocally = (user) => {
     // console.log(JSON.parse(localStorage.getItem("userData")))
 }
 
-const updateProfilePicture = () => {
-    if (localStorage.getItem('userData')) {
-        const profilePicture = JSON.parse(localStorage.getItem('userData')).profilePicture;
-        const name = JSON.parse(localStorage.getItem('userData')).name;
-        const email = JSON.parse(localStorage.getItem('userData')).email;
+const updateProfilePicture = (user) => {
+        var name = user.displayName;
+        var email = user.email;
+        var profilePicture = user.photoURL;
 
         const imageTag = `<img src=${profilePicture} width='40%' height = '40%' class='rounded mx-auto d-block' alt=${name + "(" + email + ")"}></img>`
+        const editImageTag = `<img src=${profilePicture} class='rounded mx-auto d-block' alt=${name + "(" + email + ")"}></img>`
         // console.log(profilePicture);
         document.getElementById('user').innerHTML = imageTag;
+        document.getElementById('editProfilePicture').innerHTML = editImageTag;
         document.getElementById("googleAuth").href = 'EditDetails.html';
-    } else {
-        const signInWithGoogle = 'https://developers.google.com/static/identity/images/btn_google_signin_dark_normal_web.png';
-        const imageTag = `<img  src=${signInWithGoogle} width='90%' height = '90%' class='rounded mx-auto d-block' alt="Sign in with Google"></img>`
-        document.getElementById('user').innerHTML += imageTag;
-    }
+    
 }
 
 const performAuthentication = () => {
@@ -83,7 +80,7 @@ const performAuthentication = () => {
             
             // Setting information locally
             setInformationLocally(user);
-            updateProfilePicture();
+            updateProfilePicture(user);
         } else {
             // User is signed out
             // ...
@@ -102,7 +99,7 @@ const performAuthentication = () => {
 
                 // Setting information locally
                 setInformationLocally(user);
-                updateProfilePicture();
+                updateProfilePicture(user);
             }).catch((error) => {
                 // Handle Errors here.
                 const errorCode = error.code;
