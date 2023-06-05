@@ -65,7 +65,7 @@ const submitForm = async (e) => {
 
 }
 
-submitData.addEventListener('click', submitForm)
+if(document.getElementById("submitData")) submitData.addEventListener('click', submitForm)
 
 const returnDOM = (profilePicture, name, designation, email, instagram, linkedin, github) => {
     var employeeCard = `
@@ -129,7 +129,7 @@ const loadEmployees = async () => {
         const instagram = doc.data().instagram;
 
         // console.log(name + " " + email + " " + profilePicture + " " + designation + " " + linkedin + " " + github + " " + instagram);
-        document.getElementById("allEmployees").innerHTML += returnDOM(profilePicture, name, designation, email, instagram, linkedin, github);
+        if(document.getElementById("allEmployees") !== null) document.getElementById("allEmployees").innerHTML += returnDOM(profilePicture, name, designation, email, instagram, linkedin, github);
     });
 
 }

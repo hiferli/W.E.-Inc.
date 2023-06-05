@@ -62,8 +62,8 @@ const updateProfilePicture = (user) => {
         const imageTag = `<img src=${profilePicture} width='40%' height = '40%' class='rounded mx-auto d-block' alt=${name + "(" + email + ")"}></img>`
         const editImageTag = `<img src=${profilePicture} class='rounded mx-auto d-block' alt=${name + "(" + email + ")"}></img>`
         // console.log(profilePicture);
-        document.getElementById('user').innerHTML = imageTag;
-        document.getElementById('editProfilePicture').innerHTML = editImageTag;
+        if(document.getElementById('user') !== null) document.getElementById('user').innerHTML = imageTag;
+        if(document.getElementById('editProfilePicture') !== null) document.getElementById('editProfilePicture').innerHTML = editImageTag;
         document.getElementById("googleAuth").href = 'EditDetails.html';
     
 }
@@ -116,4 +116,4 @@ const performAuthentication = () => {
 }
 
 window.onload = checkAndPerformAuthentication;
-googleAuth.addEventListener('click' , performAuthentication);
+if(document.getElementById("googleAuth")) googleAuth.addEventListener('click' , performAuthentication);
