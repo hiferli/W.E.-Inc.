@@ -86,7 +86,7 @@ const returnDOM = (profilePicture, name, designation, email, instagram, linkedin
                 </div>
 
                 <div class="d-flex justify-content-end">
-                    <a href="${email}" class="px-2 ${email === undefined || email === "" ? 'disabled' : ''}">
+                    <a href="mailto:${email}" class="px-2 ${email === undefined || email === "" ? 'disabled' : ''}">
                         <i class="bi bi-envelope-at-fill fs-2"></i>
                     </a>
                     <a href="${instagram}" class="px-2 ${instagram === undefined || instagram === "" ? 'disabled' : ''}">
