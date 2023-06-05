@@ -60,7 +60,7 @@ const submitForm = async (e) => {
         // Make sure that this updated information reaches the localstorage too
    
         localStorage.setItem("userData", JSON.stringify(userDataJSON))
-        alert("localStorage updated")
+        // alert("localStorage updated")
     }
 
 }
