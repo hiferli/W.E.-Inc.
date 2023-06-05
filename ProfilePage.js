@@ -4,7 +4,7 @@ const addUserDetails = () => {
     const profilePicture = JSON.parse(localStorage.getItem('userData')).profilePicture;
 
     const personalInformation = ` <div class="flex-grow-1 ms-3"><h2>${name}</h2><h3>${email}</h3></div>`
-    const profilePictureTag = `<div class="flex-shrink-0"><img src=${profilePicture} alt = '${name}'/></div>`
+    const profilePictureTag = `<div id='editProfilePicture' class="flex-shrink-0"><img src="${profilePicture}" alt = '${name}'/></div>`
 
     document.getElementById("userInformation").innerHTML += profilePictureTag;
     document.getElementById("userInformation").innerHTML += personalInformation;

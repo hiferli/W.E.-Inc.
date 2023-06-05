@@ -45,7 +45,7 @@
                 const profilePicture = JSON.parse(localStorage.getItem('userData')).profilePicture;
                 const name = JSON.parse(localStorage.getItem('userData')).name;
                 const email = JSON.parse(localStorage.getItem('userData')).email;
-
+                // console.log(JSON.parse(localStorage.getItem('userData')))
                 const imageTag = `<img src=${profilePicture} width='40%' height = '40%' class='rounded mx-auto d-block' alt=${name + "(" + email + ")"}></img>`
                 // console.log(profilePicture);
                 document.getElementById('user').innerHTML += imageTag;
